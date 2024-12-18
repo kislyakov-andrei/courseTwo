@@ -19,6 +19,18 @@ public class ProductBasket {
             System.out.println("в корзине нет места");
         }
     }
+    // получение стоимости корзины
+    public int getBasketCost(){
+        int total=0;
+        for (Product product:basket) {
+            if (product!=null){
+                 total += product.getCost();
+            }
+
+        }
+        return total;
+    }
+
 
     public static void printSeparator() {
         System.out.println("-------------------------------------------------------------");
