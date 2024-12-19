@@ -25,11 +25,14 @@ printSeparator();
         //basket.addProduct(product4);
          basket.addProduct(product5);
 
-        System.out.println("общая стоимость :" + basket.getBasketCost());
-printSeparator();
+        //System.out.println("общая стоимость :" + basket.getBasketCost());
+//printSeparator();
 basket.printBasket();
-printSeparator();
-        System.out.println(basket.searchProduct("сыр"));
+//printSeparator();
+        //System.out.println(basket.searchProduct("сыр"));
+        printSeparator();
+        basket.cleanBasket();
+        basket.printBasket();
 
     }
 
