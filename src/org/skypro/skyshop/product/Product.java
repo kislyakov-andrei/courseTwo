@@ -22,4 +22,8 @@ public class Product {
     public int getCost() {
         return cost;
     }
+    @Override
+    public String toString(){
+        return name + " : " + cost;
+    }
 }

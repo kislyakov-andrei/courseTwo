@@ -16,19 +16,41 @@ public class ProductBasket {
                 basket[i] = product;
                 return;
             }
-            System.out.println("в корзине нет места");
         }
+        throw new RuntimeException("в корзине нет места"); //System.out.println("в корзине нет места");
     }
+
     // получение стоимости корзины
-    public int getBasketCost(){
-        int total=0;
-        for (Product product:basket) {
-            if (product!=null){
-                 total += product.getCost();
+    public int getBasketCost() {
+        int total = 0;
+        for (int i = 0; i < basket.length; i++) {
+            if (basket[i] != null) {
+                Product product = basket[i];
+                int cost = product.getCost();
+                total += cost;
+
             }
+            if (total <= 0) {
+                throw new IllegalArgumentException("корзина пустая");
+            }//System.out.println("корзина пустая");
+            //break;}
+
 
         }
         return total;
+    }
+
+    // печать корзины
+    public void printBasket() {
+        for (int i = 0; i < basket.length; i++) {
+            if (basket[i] == null) {
+                return;
+            }
+            Product product = basket[i];
+            System.out.println(product);
+
+        }
+
     }
 
 
