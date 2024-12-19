@@ -17,7 +17,7 @@ public class ProductBasket {
                 return;
             }
         }
-        throw new RuntimeException("в корзине нет места"); //System.out.println("в корзине нет места");
+        throw new RuntimeException("Невозможно добавить продукт"); //System.out.println("в корзине нет места");
     }
 
     // получение стоимости корзины
@@ -44,15 +44,29 @@ public class ProductBasket {
     public void printBasket() {
         for (int i = 0; i < basket.length; i++) {
             if (basket[i] == null) {
-                return;
+                continue;
             }
             Product product = basket[i];
             System.out.println(product);
 
-        }
+
+        }  System.out.println("Итого: " + getBasketCost());
 
     }
+    //поиск товара
+    public boolean searchProduct(String productNick) {
+boolean exist = false;
+        for (int i = 0; i < basket.length; i++) {
+              Product product = basket[i];
+              if (basket[i]==null){
+                  continue;
+              }
 
+             exist=(product.getName().equals(productNick));
+
+
+        }return exist;
+    }
 
     public static void printSeparator() {
         System.out.println("-------------------------------------------------------------");
