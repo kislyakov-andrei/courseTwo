@@ -39,15 +39,19 @@ public class ProductBasket {
 
     // печать корзины
     public void printBasket() {
+        boolean isEmpty=true;
         for (int i = 0; i < basket.length; i++) {
-            if (basket[i] == null) {
-                continue;
+            if (basket[i] != null) {
+                Product product = basket[i];
+                System.out.println(product);
+                isEmpty=false;}
             }
-            Product product = basket[i];
-            System.out.println(product);
+        if (!isEmpty) {
+            System.out.println("Итого: " + getBasketCost());
+        }else {
+            System.out.println("В корзине пусто");
 
-
-        }  System.out.println("Итого: " + getBasketCost());
+        }
 
     }
     //поиск товара

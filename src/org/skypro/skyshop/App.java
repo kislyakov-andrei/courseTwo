@@ -19,19 +19,19 @@ public class App {
 printSeparator();
         ProductBasket basket = new ProductBasket();
         basket.addProduct(product);
-        //basket.addProduct(product1);
+        basket.addProduct(product1);
         //basket.addProduct(product2);
         //basket.addProduct(product3);
         //basket.addProduct(product4);
          basket.addProduct(product5);
 
-        //System.out.println("общая стоимость :" + basket.getBasketCost());
-//printSeparator();
+        System.out.println("общая стоимость :" + basket.getBasketCost());
+printSeparator();
 basket.printBasket();
-//printSeparator();
+printSeparator();
         //System.out.println(basket.searchProduct("сыр"));
         printSeparator();
-        basket.cleanBasket();
+         basket.cleanBasket();
         basket.printBasket();
 
     }
