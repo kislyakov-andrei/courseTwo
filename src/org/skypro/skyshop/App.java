@@ -29,7 +29,7 @@ printSeparator();
 printSeparator();
 basket.printBasket();
 printSeparator();
-        //System.out.println(basket.searchProduct("сыр"));
+        System.out.println(basket.searchProduct("сыр"));
         printSeparator();
          basket.cleanBasket();
         basket.printBasket();
