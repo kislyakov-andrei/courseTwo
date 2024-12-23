@@ -5,10 +5,10 @@ public class Product {
     private int cost;
 
     public Product(String name, int cost) {
-        if (name==null || name.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("некорректно введен товар");
         }
-        if (cost<=0){
+        if (cost <= 0) {
             throw new IllegalArgumentException("некорректная стоимость");
         }
         this.name = name;
@@ -22,8 +22,9 @@ public class Product {
     public int getCost() {
         return cost;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return name + " : " + cost;
     }
 }

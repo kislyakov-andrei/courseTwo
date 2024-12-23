@@ -1,9 +1,9 @@
 package org.skypro.skyshop;
+
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.Product;
 
 import static org.skypro.skyshop.basket.ProductBasket.printSeparator;
-
 
 
 public class App {
@@ -14,28 +14,28 @@ public class App {
         Product product2 = new Product("соль", 30);
         Product product3 = new Product("сыр", 350);
         Product product4 = new Product("мясо", 800);
-        Product product5 =new Product("рыба",310);
+        Product product5 = new Product("рыба", 310);
 
-printSeparator();
-        ProductBasket basket = new ProductBasket();
+        printSeparator();
+        ProductBasket basket = new ProductBasket();// вызов метода "добавление продукта"
         basket.addProduct(product);
         basket.addProduct(product1);
         //basket.addProduct(product2);
         //basket.addProduct(product3);
-        //basket.addProduct(product4);
-         basket.addProduct(product5);
+        basket.addProduct(product4);
+        basket.addProduct(product5);
 
-        System.out.println("общая стоимость :" + basket.getBasketCost());
-printSeparator();
-basket.printBasket();
-printSeparator();
-        System.out.println(basket.searchProduct("сыр"));
+        System.out.println("общая стоимость :" + basket.getBasketCost());// вызов метода "общая стоимость корзины"
         printSeparator();
-         basket.cleanBasket();
-        basket.printBasket();
+        basket.printBasket();// вызов метода "печать содержимого корзины"
+        printSeparator();
+        System.out.println(basket.searchProduct("сыр"));// вызов метода "поиск продукта"
+        printSeparator();
+        basket.cleanBasket();// вызов метода "очистка корзины"
+        basket.printBasket();// проверка очищения корзины
 
     }
 
-    }
+}
 
 

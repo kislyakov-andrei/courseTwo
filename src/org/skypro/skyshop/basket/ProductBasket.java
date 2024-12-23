@@ -32,49 +32,55 @@ public class ProductBasket {
             }
             if (total <= 0) {
                 System.out.println("корзина пустая");
-                break;} //throw new IllegalArgumentException("корзина пустая");
-                    }
+                break;
+            } //throw new IllegalArgumentException("корзина пустая");
+        }
         return total;
     }
 
     // печать корзины
     public void printBasket() {
-        boolean isEmpty=true;
+        boolean isEmpty = true;
         for (int i = 0; i < basket.length; i++) {
             if (basket[i] != null) {
                 Product product = basket[i];
                 System.out.println(product);
-                isEmpty=false;}
+                isEmpty = false;
             }
+        }
         if (!isEmpty) {
             System.out.println("Итого: " + getBasketCost());
-        }else {
+        } else {
             System.out.println("В корзине пусто");
 
         }
 
     }
+
     //поиск товара
     public boolean searchProduct(String productNick) {
-boolean exist = false;
+        boolean exist = false;
         for (int i = 0; i < basket.length; i++) {
-              Product product = basket[i];
-              if (basket[i]==null){
-                  continue;
-              }
+            Product product = basket[i];
+            if (basket[i] == null) {
+                continue;
+            }
 
-             exist=(product.getName().equals(productNick));
+            exist = (product.getName().equals(productNick));
 
-        }return exist;
+        }
+        return exist;
     }
+
     // очистка корзины
-    public void cleanBasket(){
+    public void cleanBasket() {
         for (int i = 0; i < basket.length; i++) {
-            basket[i]=null;
+            basket[i] = null;
 
         }
         System.out.println("корзина очищена");
     }
+
     public static void printSeparator() {
         System.out.println("-------------------------------------------------------------");
     }
