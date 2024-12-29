@@ -21,12 +21,12 @@ public class ProductBasket {
     }
 
     // получение стоимости корзины
-    public int getBasketCost() {
-        int total = 0;
-        for (int i = 0; i < basket.length; i++) {
+    public double getBasketCost() {
+        double total = 0;
+                for (int i = 0; i < basket.length; i++) {
             if (basket[i] != null) {
                 Product product = basket[i];
-                int cost = product.getCost();
+                double cost = product.getCost();
                 total += cost;
 
             }
