@@ -1,7 +1,7 @@
 package org.skypro.skyshop.product;
 
 public abstract class Product {
-     String name;
+    String name;
 
     public Product(String name) {
         if (name == null || name.isBlank()) {
@@ -9,7 +9,7 @@ public abstract class Product {
         }
         // if (cost <= 0) {
         // throw new IllegalArgumentException("некорректная стоимость");
-         //}
+        //}
         this.name = name;
 
 
@@ -19,6 +19,8 @@ public abstract class Product {
 
         return name;
     }
+
+    public abstract boolean isSpecial();
 
     public abstract double getCost();
 
