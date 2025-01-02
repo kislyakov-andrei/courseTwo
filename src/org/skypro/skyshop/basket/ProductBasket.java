@@ -4,8 +4,7 @@ import org.skypro.skyshop.product.Product;
 
 
 public class ProductBasket {
-    int count = 0;
-
+    private int count;
     static Product[] basket = new Product[5];
 
     // Добавление товара
@@ -20,13 +19,32 @@ public class ProductBasket {
         throw new RuntimeException("Невозможно добавить продукт"); //System.out.println("в корзине нет места");
     }
 
-    // получение стоимости корзины
-    public int getBasketCost() {
-        int total = 0;
+    // подсчет специальных товаров
+    public int isSpecialProduct() {
+        int count = 0;
+        boolean result;
         for (int i = 0; i < basket.length; i++) {
             if (basket[i] != null) {
                 Product product = basket[i];
-                int cost = product.getCost();
+
+                result = product.isSpecial();
+
+                if (result == true) {
+                    count++;
+                }
+
+            }
+        }
+        return count;
+    }
+
+    // получение стоимости корзины
+    public double getBasketCost() {
+        double total = 0;
+        for (int i = 0; i < basket.length; i++) {
+            if (basket[i] != null) {
+                Product product = basket[i];
+                double cost = product.getCost();
                 total += cost;
 
             }
@@ -50,6 +68,7 @@ public class ProductBasket {
         }
         if (!isEmpty) {
             System.out.println("Итого: " + getBasketCost());
+            System.out.println("Специальных товаров: " + isSpecialProduct());
         } else {
             System.out.println("В корзине пусто");
 
@@ -80,6 +99,7 @@ public class ProductBasket {
         }
         System.out.println("корзина очищена");
     }
+
 
     public static void printSeparator() {
         System.out.println("-------------------------------------------------------------");
