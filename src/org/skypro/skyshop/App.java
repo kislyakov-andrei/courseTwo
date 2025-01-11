@@ -1,15 +1,14 @@
 package org.skypro.skyshop;
-
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.DiscountedProduct;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.basket.SearchEngine;
+import org.skypro.skyshop.basket.Searchable;
+import org.skypro.skyshop.product.*;
 
 import static org.skypro.skyshop.basket.ProductBasket.printSeparator;
 
 
 public class App {
+
 
     public static void main(String[] args) {
         Product product = new DiscountedProduct("масло", 320.0, 10);
@@ -39,9 +38,20 @@ public class App {
 
         System.out.println("искомый продукт - " + product6.getName()); // какой продукт ищем, подсказка
         printSeparator();
-        basket.cleanBasket();// вызов метода "очистка корзины"
+        // basket.cleanBasket();// вызов метода "очистка корзины"
         basket.printBasket();// проверка очищения корзины
 
+        printSeparator();
+        System.out.println("Поиск");
+        System.out.println();
+        Article article1 = new Article("Сыр", "История создания продукта");
+        Article article2 = new Article("Крепкие алкогольные напитки", "Русская водка - рецепт домашнего приготовления");
+        Article article3 = new Article("Хлеб всему голова", "Интересные факты о появлении хлеба на столе славянских народов");
+        Article article4 = new Article("Соль", "Может ли человек прожить без соли");
+        System.out.println(article3.getContentArticle());
+        System.out.println(article1.getTitleArticle());
+        searchEngine.add(product2);
+        // Searchable[] searchResults = searchEngine.search ("product");
 
     }
 

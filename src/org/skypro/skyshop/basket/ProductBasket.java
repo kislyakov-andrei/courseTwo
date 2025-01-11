@@ -1,11 +1,13 @@
 package org.skypro.skyshop.basket;
 
+import org.skypro.skyshop.product.Article;
 import org.skypro.skyshop.product.Product;
 
 
 public class ProductBasket {
     private int count;
     static Product[] basket = new Product[5];
+
 
     // Добавление товара
     public void addProduct(Product product) {
