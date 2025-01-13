@@ -6,11 +6,11 @@ public interface Searchable {
     String getSearchTerm();
 
     String getType();
-    // String getName ();
+    String getName ();
 
     default String getStringRepresentation() {
 
-        return "имя объекта" + getSearchTerm() + " - тип объекта " + getType();
+        return "имя объекта - " + getName() + " - тип объекта " + getType();
 
     }
 

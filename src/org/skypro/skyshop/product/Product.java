@@ -3,9 +3,9 @@ package org.skypro.skyshop.product;
 import org.skypro.skyshop.basket.Searchable;
 
 public abstract class Product implements Searchable {
-    String name;
-    String searchTerm;
-    String PRODUCT = "product";
+    protected String name;
+    private String searchTerm;
+    private static final String TYPEPRODUCT = "PRODUCT";
 
     public Product(String name) {
         if (name == null || name.isBlank()) {
@@ -36,7 +36,7 @@ public abstract class Product implements Searchable {
 
     @Override
     public String getType() {
-        return PRODUCT;
+        return TYPEPRODUCT;
     }
 
     @Override

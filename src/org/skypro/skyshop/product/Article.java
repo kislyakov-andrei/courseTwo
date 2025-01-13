@@ -5,7 +5,7 @@ import org.skypro.skyshop.basket.Searchable;
 public class Article implements Searchable {
     private final String titleArticle;
     private final String contentArticle;
-    private String ARTICLE = "article";
+    private static final String TYPEARTICLE = "ARTICLE";
 
     public Article(String titleArticle, String contentArticle) {
         this.titleArticle = titleArticle;
@@ -22,7 +22,7 @@ public class Article implements Searchable {
 
     @Override
     public String toString (){
-        return titleArticle + System.lineSeparator() + contentArticle;
+        return titleArticle + "\n" + contentArticle;
     }
 
     @Override
@@ -32,6 +32,12 @@ public class Article implements Searchable {
 
     @Override
     public String getType(){
-        return ARTICLE;
+        return TYPEARTICLE;
     }
+
+    @Override
+    public String getName() {
+        return titleArticle;
+    }
+
 }
