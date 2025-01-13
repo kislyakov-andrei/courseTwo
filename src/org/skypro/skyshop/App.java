@@ -53,6 +53,7 @@ public class App {
         Article article5 = new Article("Хлопушка", "Шумные развлечения на праздники");
 
         SearchEngine searchEngine= new SearchEngine(10);
+
         searchEngine.add(product1);
         searchEngine.add(product2);
         searchEngine.add(product3);
