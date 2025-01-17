@@ -8,7 +8,10 @@ public class DiscountedProduct extends Product {
     public DiscountedProduct(String name, double cost, int discount) {
         super(name);
         if (cost <= 0) {
-            throw new IllegalArgumentException("некорректная стоимость");
+            throw new PriceException(name);
+        }
+        if (discount < 0 || discount > 100) {
+            throw new DiscountException(name);
         }
         this.cost = cost * (1 - discount / 100.0);
         this.discount = discount;

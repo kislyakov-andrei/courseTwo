@@ -7,9 +7,9 @@ public abstract class Product implements Searchable {
     private String searchTerm;
     private static final String TYPEPRODUCT = "PRODUCT";
 
-    public Product(String name) {
+    public Product(String name) throws NameExсeption {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("некорректно введен товар");
+            throw new NameExсeption();
         }
         // if (cost <= 0) {
         // throw new IllegalArgumentException("некорректная стоимость");
