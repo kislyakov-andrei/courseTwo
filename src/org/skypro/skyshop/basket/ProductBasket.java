@@ -1,24 +1,28 @@
 package org.skypro.skyshop.basket;
 
-import org.skypro.skyshop.product.Article;
+import org.skypro.skyshop.product.FullBasketException;
+import org.skypro.skyshop.product.NameExсeption;
 import org.skypro.skyshop.product.Product;
 
 
 public class ProductBasket {
     private int count;
     static Product[] basket = new Product[5];
-
+    String name;
 
     // Добавление товара
     public void addProduct(Product product) {
+
         for (int i = 0; i < basket.length; i++) {
 
             if (basket[i] == null) {
                 basket[i] = product;
                 return;
             }
+
         }
-        throw new RuntimeException("Невозможно добавить продукт"); //System.out.println("в корзине нет места");
+
+        throw new FullBasketException(); //System.out.println("в корзине нет места");
     }
 
     // подсчет специальных товаров

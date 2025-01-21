@@ -21,17 +21,19 @@ public class Article implements Searchable {
     }
 
     @Override
-    public String toString (){
+    public String toString() {
         return titleArticle + "\n" + contentArticle;
     }
 
     @Override
-    public String getSearchTerm(){
+    public String getSearchTerm() {
         return titleArticle + contentArticle;
-    };
+    }
+
+    ;
 
     @Override
-    public String getType(){
+    public String getType() {
         return TYPEARTICLE;
     }
 
