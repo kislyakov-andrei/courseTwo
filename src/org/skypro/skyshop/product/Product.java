@@ -4,16 +4,13 @@ import org.skypro.skyshop.basket.Searchable;
 
 public abstract class Product implements Searchable {
     protected String name;
-    private String searchTerm;
-    private static final String TYPEPRODUCT = "PRODUCT";
+        private static final String TYPEPRODUCT = "PRODUCT";
 
-    public Product(String name) throws NameExсeption {
+    public Product(String name) throws NameException {
         if (name == null || name.isBlank()) {
-            throw new NameExсeption();
+            throw new NameException();
         }
-        // if (cost <= 0) {
-        // throw new IllegalArgumentException("некорректная стоимость");
-        //}
+
         this.name = name;
 
 
@@ -31,6 +28,7 @@ public abstract class Product implements Searchable {
 
     @Override
     public String toString() {
+
         return name + " : " + getCost();
     }
 

@@ -18,23 +18,23 @@ public class App {
     public static void main(String[] args) {
         try {
 
-            //Product product = new DiscountedProduct("масло", 320.0, 10);
+            Product product = new DiscountedProduct("сахар", 100.0, 10);
 
             Product product1 = new SimpleProduct("хлеб", 120.0);
             Product product2 = new SimpleProduct("соль", 20);
-            Product product3 = new DiscountedProduct("масло", 320.0, 10);
+            Product product3 = new DiscountedProduct("масло", 320.0, 20);
             // проверка обработки исключения
             Product product4 = new FixPriceProduct("конфеты");
-            // Product product5 = new SimpleProduct("рыба", 310);
+            Product product5 = new SimpleProduct("хлеб", 310);
             Product product6 = new FixPriceProduct("водка");
             printSeparator();
             ProductBasket basket = new ProductBasket();
-            // basket.addProduct(product);
+            basket.addProduct(product);
             basket.addProduct(product1);
             basket.addProduct(product2);
             basket.addProduct(product3);
             basket.addProduct(product4);
-            //basket.addProduct(product5);
+            basket.addProduct(product5);
             basket.addProduct(product6);
 
 
@@ -46,8 +46,18 @@ public class App {
             printSeparator();
 
             printSeparator();
-            // basket.cleanBasket();// вызов метода "очистка корзины"
+            //basket.cleanBasket();// вызов метода "очистка корзины"
             //basket.printBasket();// проверка очищения корзины
+            //System.out.println(basket.searchProduct("хлеб"));
+            basket.printBasket();
+            printSeparator();
+
+            // удаление продукта по имени
+            basket.deletProductToName("хлеб");
+            printSeparator();
+            basket.deletProductToName("пиво");
+            printSeparator();
+            basket.printBasket();
 
             printSeparator();
             System.out.println("Поиск");
@@ -58,37 +68,33 @@ public class App {
             Article article4 = new Article("Соль", "Может ли человек прожить без соли");
             Article article5 = new Article("Хлопушка", "Шумные развлечения на праздники");
 
-            SearchEngine searchEngine = new SearchEngine(10);
+            SearchEngine searchable = new SearchEngine();
 
-            searchEngine.add(product1);
-            searchEngine.add(product2);
-            searchEngine.add(product3);
-            //searchEngine.add(product5);
-            searchEngine.add(product4);
-            searchEngine.add(product6);
-            searchEngine.add(article2);
-            searchEngine.add(article1);
-            searchEngine.add(article3);
-            searchEngine.add(article5);
-            searchEngine.add(article4);
+            searchable.add(product1);
+            searchable.add(product2);
+            searchable.add(product3);
+            searchable.add(product5);
+            searchable.add(product4);
+            searchable.add(product6);
+            searchable.add(article2);
+            searchable.add(article1);
+            searchable.add(article3);
+            searchable.add(article5);
+            searchable.add(article4);
 
-            Searchable[] searchResult1 = searchEngine.search("водка");
-            //Searchable[] searchResult = searchEngine.search("хлеб");
-            System.out.println(Arrays.toString(searchResult1));
-            //System.out.println(Arrays.toString(searchResult));
-            System.out.println(article1.getStringRepresentation());
+            searchable.search("Водка");
             printSeparator();
+            searchable.search("хлЕб");
 
-             System.out.println(searchEngine.foundBestResult("хлеб"));
+            //System.out.println(article1.getStringRepresentation());
+            printSeparator();
+            System.out.println("поиск наиболее часто встречающегося продукта");
+            System.out.println(searchable.foundBestResult("хлеб"));
 
 
-        } catch (NameExсeption e) {
+        } catch (NameException e) {
             System.out.println("Некорректно введено название");
-        } catch (PriceException e) {
-            System.out.println(e);
-        } catch (DiscountException e) {
-            System.out.println(e);
-        } catch (BestResultNotFound e) {
+        } catch (PriceException | DiscountException | BestResultNotFound e) {
             System.out.println(e);
         }
 
