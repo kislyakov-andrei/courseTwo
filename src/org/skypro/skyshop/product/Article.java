@@ -22,12 +22,12 @@ public class Article implements Searchable {
 
     @Override
     public String toString() {
-        return titleArticle + "\n" + contentArticle;
+        return "\n" + titleArticle + ":\n" + contentArticle;
     }
 
     @Override
     public String getSearchTerm() {
-        return titleArticle + contentArticle;
+        return titleArticle + "-" + contentArticle;
     }
 
     ;

@@ -1,63 +1,65 @@
 package org.skypro.skyshop.basket;
 
 
+import org.skypro.skyshop.product.Product;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 public class SearchEngine {
     int count = 0;
-    // private int size;
-    Searchable[] searchables;
+    static List<Searchable> searchables = new LinkedList<>();
 
-    public SearchEngine(int size) {
-        this.searchables = new Searchable[size];
-    }
+
     public void add(Searchable searchable) {
-        if (count >= searchables.length) {
-            System.out.println("Добавить объект невозможно!");
-        }
-        searchables[count] = searchable;
-        count++;
+        searchables.add(searchable);
     }
-    public Searchable[] search(String searchTerm) {
-        int countResalt = 0;
+
+    // удаление товара по имени
+    public void search(String name) {
+        List<Searchable> search = new LinkedList<>();
+        System.out.println("Поиск продукта " + name);
+
+        Iterator<Searchable> iterator = searchables.iterator();
+
+        while (iterator.hasNext()) {
+            Searchable element = iterator.next();
+            if (element.getName().toLowerCase().contains(name.toLowerCase())) {
+                search.add(element);
+            }
+
+        }
+        if (search.isEmpty()) {
+            System.out.println("Продукт " + name + " не найден.");
+        }
+        System.out.println("Результат поиска: " + search);
+    }
+
+
+    public Searchable foundBestResult(String searchTerm) throws BestResultNotFound {
         Searchable[] result = new Searchable[5];
+
+        Searchable bestResult = null;
+        int maxFound = 0;
+        int score;
         for (Searchable searchable : searchables) {
-            if (searchable == null) {
-                continue;
-            }
-            if (searchable.getSearchTerm().toLowerCase().contains(searchTerm.toLowerCase())) {
-                result[countResalt] = searchable;
-                countResalt++;
-            }
-            if (countResalt == result.length) {
-                break;
-            }
-        }
-        return result;
-
-    }
-
-public Searchable foundBestResult (String searchTerm) throws BestResultNotFound {
-    Searchable[] result = new Searchable[5];
-
-    Searchable bestResult = null;
-    int maxFound = 0;
-    int score;
-    for (Searchable searchable : searchables) {
-        String str = searchable.getSearchTerm().toLowerCase();
-        String subStr = searchTerm.toLowerCase();
-        score = resultMaxFound(str, subStr);
-        if (score > maxFound) {
-            maxFound = score;
-            bestResult = searchable;
-        } else if (bestResult == null) {
+            String str = searchable.getSearchTerm().toLowerCase();
+            String subStr = searchTerm.toLowerCase();
+            score = resultMaxFound(str, subStr);
+            if (score > maxFound) {
+                maxFound = score;
+                bestResult = searchable;
+            } else if (bestResult == null) {
                 throw new BestResultNotFound(searchTerm);
             }
 
+        }
+        return bestResult;
     }
-    return bestResult;
-}
 
 
-    private int resultMaxFound (String str, String subStr){
+    private int resultMaxFound(String str, String subStr) {
         int score = 0;
         int index = 0;
         int indexSubStr = str.indexOf(subStr, index);
@@ -69,6 +71,5 @@ public Searchable foundBestResult (String searchTerm) throws BestResultNotFound 
         return score;
     }
 }
-
 
 
