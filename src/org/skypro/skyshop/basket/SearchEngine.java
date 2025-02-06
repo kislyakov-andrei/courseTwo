@@ -3,43 +3,34 @@ package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.product.Product;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class SearchEngine {
-    int count = 0;
-    static List<Searchable> searchables = new LinkedList<>();
+
+    private List<Searchable> searchables = new LinkedList<>();
 
 
     public void add(Searchable searchable) {
         searchables.add(searchable);
     }
 
-    // удаление товара по имени
-    public void search(String name) {
-        List<Searchable> search = new LinkedList<>();
+    // поиск товара по имени
+    public Map<String, Searchable> search(String name) {
         System.out.println("Поиск продукта " + name);
+        Map<String, Searchable> searchResult = new TreeMap<>();
 
-        Iterator<Searchable> iterator = searchables.iterator();
+        for (Searchable searchable : searchables) {
 
-        while (iterator.hasNext()) {
-            Searchable element = iterator.next();
-            if (element.getName().toLowerCase().contains(name.toLowerCase())) {
-                search.add(element);
+            if (searchable.getSearchTerm().toLowerCase().contains(name.toLowerCase())) {
+                searchResult.put(searchable.getStringRepresentation(), searchable);
             }
+        }
+        return searchResult;
 
-        }
-        if (search.isEmpty()) {
-            System.out.println("Продукт " + name + " не найден.");
-        }
-        System.out.println("Результат поиска: " + search);
     }
 
 
     public Searchable foundBestResult(String searchTerm) throws BestResultNotFound {
-        Searchable[] result = new Searchable[5];
-
         Searchable bestResult = null;
         int maxFound = 0;
         int score;
@@ -70,6 +61,17 @@ public class SearchEngine {
         }
         return score;
     }
+
+    // печать корзины
+    public void printSearchebles() {
+        if (!searchables.isEmpty()) {
+            System.out.println(searchables);
+        } else {
+            System.out.println("Корзина пустая.");
+        }
+    }
+
+
 }
 
 
