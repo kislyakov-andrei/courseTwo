@@ -20,7 +20,7 @@ public class App {
 
             Product product = new DiscountedProduct("сахар", 100.0, 10);
 
-            Product product1 = new SimpleProduct("хлеб", 120.0);
+            Product product1 = new SimpleProduct("хлеб1", 120.0);
             Product product2 = new SimpleProduct("соль", 20);
             Product product3 = new DiscountedProduct("масло", 320.0, 20);
             // проверка обработки исключения
@@ -37,23 +37,27 @@ public class App {
             basket.addProduct(product5);
             basket.addProduct(product6);
 
-
             // вызов метода "добавление продукта"
 
-            System.out.println("общая стоимость :" + basket.getBasketCost());// вызов метода "общая стоимость корзины"
+
+            // System.out.println("общая стоимость :" + basket.getBasketCost());// вызов метода "общая стоимость корзины"
             printSeparator();
             basket.printBasket();// вызов метода "печать содержимого корзины"
+            System.out.println("Стоимость корзины: " + basket.getBasketCost());
+            System.out.println("Специальных продуктов: " + basket.isSpecialProduct());
             printSeparator();
-
+            // вызов метода "очистка корзины"
+            System.out.println("очистка корзины");
+            //basket.cleanBasket();
             printSeparator();
-            //basket.cleanBasket();// вызов метода "очистка корзины"
-            //basket.printBasket();// проверка очищения корзины
-            //System.out.println(basket.searchProduct("хлеб"));
+            // проверка очищения корзины
             basket.printBasket();
+            // поиск продукта
+            System.out.println(basket.searchProduct("хлеб"));
             printSeparator();
 
             // удаление продукта по имени
-            basket.deletProductToName("хлеб");
+            // basket.deletProductToName("хлеб");
             printSeparator();
             basket.deletProductToName("пиво");
             printSeparator();
@@ -81,10 +85,12 @@ public class App {
             searchable.add(article3);
             searchable.add(article5);
             searchable.add(article4);
+            //searchable.printSearchebles();
 
-            searchable.search("Водка");
+            searchable.search("пиво");
             printSeparator();
-            searchable.search("хлЕб");
+
+            System.out.println(searchable.search("Хлеб"));
 
             //System.out.println(article1.getStringRepresentation());
             printSeparator();
