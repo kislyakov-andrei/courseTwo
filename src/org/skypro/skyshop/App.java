@@ -20,11 +20,11 @@ public class App {
 
             Product product = new DiscountedProduct("сахар", 100.0, 10);
 
-            Product product1 = new SimpleProduct("хлеб1", 120.0);
+            Product product1 = new SimpleProduct("Хлеб", 120.0);
             Product product2 = new SimpleProduct("соль", 20);
             Product product3 = new DiscountedProduct("масло", 320.0, 20);
             // проверка обработки исключения
-            Product product4 = new FixPriceProduct("конфеты");
+            Product product4 = new FixPriceProduct("масло");
             Product product5 = new SimpleProduct("хлеб", 310);
             Product product6 = new FixPriceProduct("водка");
             printSeparator();
@@ -53,7 +53,7 @@ public class App {
             // проверка очищения корзины
             basket.printBasket();
             // поиск продукта
-            System.out.println(basket.searchProduct("хлеб"));
+            System.out.println(basket.searchProduct("Хлеб"));
             printSeparator();
 
             // удаление продукта по имени
@@ -71,6 +71,7 @@ public class App {
             Article article3 = new Article("Хлеб всему голова", "Интересные факты о появлении хлеба на столе славянских народов.Сорта хлеба.");
             Article article4 = new Article("Соль", "Может ли человек прожить без соли");
             Article article5 = new Article("Хлопушка", "Шумные развлечения на праздники");
+            Article article6 = new Article("хлеб", "История");
 
             SearchEngine searchable = new SearchEngine();
 
@@ -84,8 +85,9 @@ public class App {
             searchable.add(article1);
             searchable.add(article3);
             searchable.add(article5);
+            searchable.add(article6);
             searchable.add(article4);
-            //searchable.printSearchebles();
+            // searchable.printSearchebles();
 
             searchable.search("пиво");
             printSeparator();

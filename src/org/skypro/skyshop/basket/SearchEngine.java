@@ -7,7 +7,7 @@ import java.util.*;
 
 public class SearchEngine {
 
-    private List<Searchable> searchables = new LinkedList<>();
+    private Set<Searchable> searchables = new HashSet<>();
 
 
     public void add(Searchable searchable) {
@@ -15,17 +15,34 @@ public class SearchEngine {
     }
 
     // поиск товара по имени
-    public Map<String, Searchable> search(String name) {
+    public Set<String> search(String name) {
         System.out.println("Поиск продукта " + name);
-        Map<String, Searchable> searchResult = new TreeMap<>();
+        Set<String> searchResult = new TreeSet<>(new LenthStringComparator());
 
         for (Searchable searchable : searchables) {
-
-            if (searchable.getSearchTerm().toLowerCase().contains(name.toLowerCase())) {
-                searchResult.put(searchable.getStringRepresentation(), searchable);
-            }
+            if (searchable.getName().toLowerCase().contains(name.toLowerCase())) {
+                searchResult.add(searchable.getName());
+           }
+        }
+        if (searchResult.isEmpty()) {
+            System.out.println("Продукт -"+name+"- не найден");
         }
         return searchResult;
+
+    }
+    public static class LenthStringComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            int lengthComparison = Integer.compare(s2.length(), s1.length());
+
+            // Если длины равны, сравниваем имена
+            if (lengthComparison == 0) {
+                return s1.compareToIgnoreCase(s2);
+
+            }
+
+            return lengthComparison;
+        }
 
     }
 
