@@ -11,7 +11,7 @@ import java.util.Comparator;
 
             // Если длины равны, сравниваем имена
             if (lengthComparison == 0) {
-                return o1.compareToIgnoreCase(o2);
+                return o1.getSearchTerm().compareToIgnoreCase(o2.getSearchTerm());
 
             }
 
