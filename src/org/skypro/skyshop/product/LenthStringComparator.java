@@ -6,17 +6,17 @@ import java.util.Comparator;
 
     public class LenthStringComparator implements Comparator<Searchable> {
         @Override
-        public int compare(String s1, String s2) {
-            int lengthComparison = Integer.compare(s2.length(), s1.length());
+        public int compare(Searchable o1, Searchable o2) {
+            int lengthComparison = Integer.compare(o2.length(), o1.length());
 
             // Если длины равны, сравниваем имена
             if (lengthComparison == 0) {
-                return s1.compareToIgnoreCase(s2);
+                return o1.compareToIgnoreCase(o2);
 
             }
 
             return lengthComparison;
         }
 
-    }
+            }
 
