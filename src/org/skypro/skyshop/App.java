@@ -37,12 +37,10 @@ public class App {
             basket.addProduct(product5);
             basket.addProduct(product6);
 
-            // вызов метода "добавление продукта"
 
-
-            // System.out.println("общая стоимость :" + basket.getBasketCost());// вызов метода "общая стоимость корзины"
             printSeparator();
             basket.printBasket();// вызов метода "печать содержимого корзины"
+
             System.out.println("Стоимость корзины: " + basket.getBasketCost());
             System.out.println("Специальных продуктов: " + basket.isSpecialProduct());
             printSeparator();
@@ -96,7 +94,7 @@ public class App {
 
             System.out.println(searchable.search("Хлеб"));
 
-            //System.out.println(article1.getStringRepresentation());
+            System.out.println(article1.getStringRepresentation());
             printSeparator();
             System.out.println("поиск наиболее часто встречающегося продукта");
             System.out.println(searchable.foundBestResult("хлеб"));

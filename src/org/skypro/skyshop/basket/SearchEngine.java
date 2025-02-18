@@ -21,14 +21,13 @@ public class SearchEngine {
     public Set<Searchable> search(String name) {
         System.out.println("Поиск продукта " + name);
         TreeSet<Searchable> searchResult = searchables.stream()
-        //Set<String> searchResult = new TreeSet<>(new LenthStringComparator());
-                .filter(s->s.getName().toLowerCase().contains(name.toLowerCase()))
-                .collect(Collectors.toCollection(()->new TreeSet<>(new LenthStringComparator())));
+                .filter(s -> s.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toCollection(() -> new TreeSet<>(new LenthStringComparator())));
 
 
         if (searchResult.isEmpty()) {
-           System.out.println("Продукт -"+name+"- не найден");
-       }
+            System.out.println("Продукт -" + name + "- не найден");
+        }
         return searchResult;
 
     }
@@ -77,12 +76,6 @@ public class SearchEngine {
 
 
 }
-//new TreeSet<>(new LenthStringComparator());
 
-// for (Searchable searchable : searchables) {
-// if (searchable.getName().toLowerCase().contains(name.toLowerCase())) {
-//     searchResult.add(searchable.getName());
-// }
-// }
 
 
