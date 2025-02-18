@@ -89,7 +89,9 @@ public class App {
             searchable.add(article4);
             // searchable.printSearchebles();
 
-            searchable.search("пиво");
+            System.out.println(searchable.search("пиво"));
+            printSeparator();
+            System.out.println(searchable.search("Масло"));
             printSeparator();
 
             System.out.println(searchable.search("Хлеб"));
