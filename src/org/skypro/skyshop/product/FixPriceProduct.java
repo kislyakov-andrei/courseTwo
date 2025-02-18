@@ -1,5 +1,7 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.basket.Searchable;
+
 public class FixPriceProduct extends Product {
     private double FIX_PRICE = 50.0;
     private double cost;
@@ -23,5 +25,10 @@ public class FixPriceProduct extends Product {
     @Override
     public boolean isSpecial(){
         return true;
+    }
+
+    @Override
+    public int compareToIgnoreCase(Searchable o2) {
+        return 0;
     }
 }
