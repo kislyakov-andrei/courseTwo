@@ -27,6 +27,7 @@ public class App {
             Product product4 = new FixPriceProduct("масло");
             Product product5 = new SimpleProduct("хлеб", 310);
             Product product6 = new FixPriceProduct("водка");
+            Product product7 = new FixPriceProduct("масло");
             printSeparator();
             ProductBasket basket = new ProductBasket();
             basket.addProduct(product);
@@ -36,6 +37,7 @@ public class App {
             basket.addProduct(product4);
             basket.addProduct(product5);
             basket.addProduct(product6);
+            basket.addProduct(product7);
 
 
             printSeparator();
@@ -55,7 +57,7 @@ public class App {
             printSeparator();
 
             // удаление продукта по имени
-            // basket.deletProductToName("хлеб");
+            basket.deletProductToName("хлеб");
             printSeparator();
             basket.deletProductToName("пиво");
             printSeparator();
