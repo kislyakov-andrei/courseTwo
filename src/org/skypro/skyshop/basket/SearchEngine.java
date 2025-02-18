@@ -1,6 +1,7 @@
 package org.skypro.skyshop.basket;
 
 
+import org.skypro.skyshop.product.LenthStringComparator;
 import org.skypro.skyshop.product.Product;
 
 import java.util.*;
@@ -29,21 +30,6 @@ public class SearchEngine {
            System.out.println("Продукт -"+name+"- не найден");
        }
         return searchResult;
-
-    }
-    public static class LenthStringComparator implements Comparator<String> {
-        @Override
-        public int compare(String s1, String s2) {
-            int lengthComparison = Integer.compare(s2.length(), s1.length());
-
-            // Если длины равны, сравниваем имена
-            if (lengthComparison == 0) {
-                return s1.compareToIgnoreCase(s2);
-
-            }
-
-            return lengthComparison;
-        }
 
     }
 
