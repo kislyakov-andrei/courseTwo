@@ -15,4 +15,5 @@ public interface Searchable {
 
     }
 
+    int compareToIgnoreCase(Searchable o2);
 }

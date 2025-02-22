@@ -6,7 +6,7 @@ import java.util.*;
 
 
 public class ProductBasket {
-    // static List<Product> basket = new LinkedList<>();
+
     Map<String, List<Product>> basket = new HashMap<>();
 
     // Добавление товара
@@ -30,38 +30,30 @@ public class ProductBasket {
     }
 
     // подсчет специальных товаров
-    public int isSpecialProduct() {
-        int count = 0;
-        for (List<Product> productList : basket.values()) {
-            for (Product product : productList) {
-                if (product.isSpecial()) {
-                    count++;
-                }
-            }
-        }
-        return count;
+    public long isSpecialProduct() {
+        long countSpesial = 0;
+        countSpesial = basket.values().stream()
+                .flatMap(Collection::stream)
+                .filter(o -> o.isSpecial())
+                .count();
+        return countSpesial;
     }
 
     // получение стоимости корзины
     public double getBasketCost() {
         double total = 0;
-        for (List<Product> productList : basket.values()) {
-            for (Product product : productList) {
-                total += product.getCost();
-
-            }
-        }
-
+        total = basket.values().stream().flatMap(Collection::stream)
+                .mapToDouble(x -> x.getCost())
+                .sum();
         return total;
     }
 
     // печать корзины
     public void printBasket() {
         if (!basket.isEmpty()) {
-            System.out.println(basket);
+            basket.values().stream().forEach(System.out::println);
         } else {
             System.out.println("Корзина пустая.");
-
         }
     }
 

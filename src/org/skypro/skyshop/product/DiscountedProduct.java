@@ -1,5 +1,7 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.basket.Searchable;
+
 public class DiscountedProduct extends Product {
     private double cost;
     //private double price;
@@ -34,4 +36,8 @@ public class DiscountedProduct extends Product {
         return true;
     }
 
+    @Override
+    public int compareToIgnoreCase(Searchable o2) {
+        return 0;
+    }
 }

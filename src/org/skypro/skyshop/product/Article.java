@@ -45,6 +45,11 @@ public class Article implements Searchable {
     }
 
     @Override
+    public int compareToIgnoreCase(Searchable o2) {
+        return 0;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

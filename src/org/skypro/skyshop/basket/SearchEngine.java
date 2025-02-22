@@ -1,9 +1,12 @@
 package org.skypro.skyshop.basket;
 
 
+import org.skypro.skyshop.product.LenthStringComparator;
 import org.skypro.skyshop.product.Product;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SearchEngine {
 
@@ -15,34 +18,17 @@ public class SearchEngine {
     }
 
     // поиск товара по имени
-    public Set<String> search(String name) {
+    public Set<Searchable> search(String name) {
         System.out.println("Поиск продукта " + name);
-        Set<String> searchResult = new TreeSet<>(new LenthStringComparator());
+        TreeSet<Searchable> searchResult = searchables.stream()
+                .filter(s -> s.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toCollection(() -> new TreeSet<>(new LenthStringComparator())));
 
-        for (Searchable searchable : searchables) {
-            if (searchable.getName().toLowerCase().contains(name.toLowerCase())) {
-                searchResult.add(searchable.getName());
-           }
-        }
+
         if (searchResult.isEmpty()) {
-            System.out.println("Продукт -"+name+"- не найден");
+            System.out.println("Продукт -" + name + "- не найден");
         }
         return searchResult;
-
-    }
-    public static class LenthStringComparator implements Comparator<String> {
-        @Override
-        public int compare(String s1, String s2) {
-            int lengthComparison = Integer.compare(s2.length(), s1.length());
-
-            // Если длины равны, сравниваем имена
-            if (lengthComparison == 0) {
-                return s1.compareToIgnoreCase(s2);
-
-            }
-
-            return lengthComparison;
-        }
 
     }
 
@@ -90,5 +76,6 @@ public class SearchEngine {
 
 
 }
+
 
 
